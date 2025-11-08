@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion'; 
+
+import Electricals from "../../assets/E1.png";
+import Doors from "../../assets/Doors.png";
+import Plumbing from "../../assets/P1.png";
+import Sanitary from "../../assets/s1.png";
+import Appliance from "../../assets/A1.png";
 
 const slides = [
   {
@@ -8,7 +14,8 @@ const slides = [
     category: 'Electrical Solutions',
     title: 'Reliable & Premium Brands for Safe Homes',
     description: 'Complete electrical systems from leading manufacturers',
-    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&q=80',
+    // image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&q=80',
+    image: Electricals,
     gradient: 'from-[#0b2343]/90 to-[#008c94]/80'
   },
   {
@@ -16,7 +23,8 @@ const slides = [
     category: 'Tiles & Interiors',
     title: 'Elevate Interiors with Premium Tiles & Doors',
     description: 'Transform spaces with elegant flooring and wall solutions',
-    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=1920&q=80',
+    // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=1920&q=80',
+    image: Doors,
     gradient: 'from-[#0b2343]/90 to-[#bba14f]/70'
   },
   {
@@ -24,15 +32,17 @@ const slides = [
     category: 'Plumbing Systems',
     title: 'Durable Plumbing, Built to Last',
     description: 'Professional-grade pipes, fittings and plumbing solutions',
-    image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1920&q=80',
-    gradient: 'from-[#008c94]/90 to-[#00b8a9]/80'
+    // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1920&q=80',
+    image: Plumbing,
+    gradient: 'from-[#008c94]/70 to-[#00b8a9]/60'
   },
   {
     id: 4,
     category: 'Sanitaryware & Kitchenware',
     title: 'Comfort, Design & Durability',
     description: 'Premium bathroom and kitchen fixtures for modern living',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1920&q=80',
+    // image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1920&q=80',
+    image: Sanitary,
     gradient: 'from-[#0b2343]/90 to-[#1a3a5c]/85'
   },
   {
@@ -40,8 +50,9 @@ const slides = [
     category: 'Home Appliances',
     title: 'Smart Appliances for Modern Living',
     description: 'Energy-efficient solutions for contemporary homes',
-    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80',
-    gradient: 'from-[#bba14f]/80 to-[#0b2343]/90'
+    // image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80',
+    image : Appliance,
+    gradient: 'from-[#bba14f]/80 to-[#0b2343]/50'
   }
 ];
 

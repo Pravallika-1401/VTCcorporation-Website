@@ -37,7 +37,7 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+91 9876543210', '+91 9876543211'],
+      details: ['+91 93989 22734', '+91 9876543211'],
       gradient: 'from-[#bba14f] to-[#d4b870]'
     },
     {
@@ -49,7 +49,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: 'Address',
-      details: ['Main Road, Vijayawada', 'Andhra Pradesh, India - 520001'],
+      details: ['Ground Floor, 31-32-28, Near Captain Ramarao Junction, Dabagardens, Visakhapatnam-530020, Andhra Pradesh, India'],
       gradient: 'from-[#0b2343] to-[#1a3a5c]'
     },
     {
@@ -162,7 +162,7 @@ export default function ContactSection() {
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                   Your Message *
                 </label>
@@ -176,7 +176,23 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#008c94] focus:ring-2 focus:ring-[#008c94]/20 transition-all duration-300 outline-none resize-none"
                   placeholder="Tell us about your requirements..."
                 />
-              </div>
+              </div> */}
+
+              <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Your Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    className="w-full !h-[300px] px-4 py-3 rounded-lg border border-gray-300 focus:border-[#008c94] focus:ring-2 focus:ring-[#008c94]/20 transition-all duration-300 outline-none resize-none"
+                    placeholder="Tell us about your requirements..."
+                  />
+                </div>
 
               {/* Success/Error Message */}
               {formStatus && (
@@ -261,7 +277,7 @@ export default function ContactSection() {
             <div className="bg-white rounded-2xl p-4 shadow-lg">
               <div className="w-full h-80 bg-gray-200 rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122283.89353213937!2d80.52084879999999!3d16.5061743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b1ad8d0c15e0f!2sVijayawada%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.019004924767!2d83.3030478!3d17.728487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b1ad8d0c15e0f!2sDaba%20Gardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530220%2C%20India!5e0!3m2!1sen!2sin!4v1670000000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

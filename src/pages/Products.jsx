@@ -6,25 +6,53 @@ import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
 import { createPageUrl } from '../utils';
 
+import polycab from "../assets/polycab.png";
+import schneider from "../assets/schneider.png";
+import precision from "../assets/precision.png";
+import astral from "../assets/astral.png";
+import geberit from "../assets/geberit.png";
+import century from "../assets/century.png";
+import simpol from "../assets/simpolo.png";
+import mapei from "../assets/mapei.png";
+import kohler from "../assets/kohler.png";
+import franke from "../assets/franke.png";
+import cera from "../assets/cera.png";
+import racold from "../assets/racold.png";
+import ionexchange from "../assets/ionexchange.png";
+import vguard from "../assets/vguard.png";
+import grundfos from "../assets/grundfos.png";
+import brp from "../assets/brp.png";
+import rn from "../assets/rn.png";
+import nikolas from "../assets/nikolas.png";
+
+import Electricals from "../assets/E1.png";
+import Doors from "../assets/Doors.png";
+import Plumbing from "../assets/P1.png";
+import Sanitary from "../assets/s1.png";
+import Appliance from "../assets/A1.png";
+
+
 const categories = [
   {
     id: 'electrical',
     icon: Zap,
     title: 'Electrical Solutions',
     description: 'Complete range of switches, wires, MCBs, lighting solutions and electrical accessories',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
+    // image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
+    image: Electricals,
     gradient: 'from-[#0b2343] to-[#1a3a5c]',
-    brands: ['Havells', 'Polycab', 'Finolex', 'Anchor', 'Legrand', 'Schneider'],
+    brands: ['Schneider', 'Polycab', 'RN'],
     products: ['Modular Switches', 'Electrical Wires', 'MCBs & DBs', 'LED Lights', 'Fans', 'Stabilizers']
   },
   {
     id: 'tiles',
     icon: Boxes,
-    title: 'Tiles & Flooring',
+    title: 'Doors,Tiles & Flooring',
     description: 'Premium ceramic, vitrified, marble tiles and designer flooring solutions',
-    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80',
+    // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80',
+    image: Doors,
     gradient: 'from-[#bba14f] to-[#d4b870]',
-    brands: ['Kajaria', 'Somany', 'Nitco', 'Johnson', 'RAK', 'Orient Bell'],
+    brands: ['Century Doors', 'Simpolo', 'Mapei'],
     products: ['Vitrified Tiles', 'Ceramic Tiles', 'Marble Tiles', 'Wall Tiles', 'Parking Tiles', 'Wooden Flooring']
   },
   {
@@ -32,9 +60,10 @@ const categories = [
     icon: Droplet,
     title: 'Plumbing Systems',
     description: 'High-quality CPVC pipes, PVC fittings, valves and complete plumbing infrastructure',
-    image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80',
+    // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80',
+    image: Plumbing,
     gradient: 'from-[#008c94] to-[#00b8a9]',
-    brands: ['Ashirvad', 'Supreme', 'Astral', 'Prince', 'Finolex', 'Apollo'],
+    brands: ['Geberit', 'Precision', 'Astral', 'Brp'],
     products: ['CPVC Pipes', 'PVC Pipes', 'Pipe Fittings', 'Valves', 'Water Tanks', 'Drainage Systems']
   },
   {
@@ -42,9 +71,10 @@ const categories = [
     icon: Sprout,
     title: 'Sanitaryware & Bath Fittings',
     description: 'Modern bathroom fixtures, kitchen sinks, faucets and premium bath accessories',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
+    // image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
+    image: Sanitary,
     gradient: 'from-[#0b2343] to-[#008c94]',
-    brands: ['Cera', 'Parryware', 'Hindware', 'Jaquar', 'Kohler', 'Marc'],
+    brands: ['Cera', 'Franke', 'Kohler', 'Nikolas'],
     products: ['Wash Basins', 'Water Closets', 'Kitchen Sinks', 'Faucets', 'Showers', 'Bath Accessories']
   },
   {
@@ -52,9 +82,10 @@ const categories = [
     icon: Refrigerator,
     title: 'Home Appliances',
     description: 'Energy-efficient kitchen and home appliances from leading brands',
-    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80',
+    // image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80',
+    image: Appliance,
     gradient: 'from-[#1a3a5c] to-[#bba14f]',
-    brands: ['LG', 'Samsung', 'Whirlpool', 'Voltas', 'Godrej', 'Bosch'],
+    brands: ['Racold', 'Ion Exchange', 'V-Guard', 'Grundfos'],
     products: ['Refrigerators', 'Washing Machines', 'Air Conditioners', 'Microwave Ovens', 'Water Heaters', 'Chimneys']
   }
 ];
@@ -189,7 +220,7 @@ export default function Products() {
                   </p>
 
                   {/* Brand Tags */}
-                  <div className="mb-6">
+                  {/* <div className="mb-6">
                     <h4 className="text-sm font-semibold text-gray-700 mb-3">Featured Brands:</h4>
                     <div className="flex flex-wrap gap-2">
                       {category.brands.map(brand => (
@@ -201,7 +232,56 @@ export default function Products() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </div> */}
+
+                  <div className="mb-6">
+                          <h4 className="text-sm font-semibold text-gray-700 mb-3">Featured Brands:</h4>
+                          <div className="flex flex-wrap gap-3 items-center">
+                            {category.brands.map((brand) => {
+                              const brandLogos = {
+                                Polycab: polycab,
+                                Schneider: schneider,
+                                Precision: precision,
+                                Astral: astral,
+                                Geberit: geberit,
+                                Century: century,
+                                Simpolo: simpol,
+                                Mapei: mapei,
+                                Kohler: kohler,
+                                Franke: franke,
+                                Cera: cera,
+                                Racold: racold,
+                                "Ion Exchange": ionexchange,
+                                "V-Guard": vguard,
+                                Grundfos: grundfos,
+                                Brp: brp,
+                                RN: rn,
+                                Nikolas: nikolas,
+                                "Century Doors": century,
+                              };
+
+                              const logoSrc = brandLogos[brand];
+
+                              return (
+                                <div
+                                  key={brand}
+                                  className="bg-[#eef7fb] rounded-full px-4 py-2 flex items-center justify-center shadow-sm"
+                                >
+                                  {logoSrc ? (
+                                    <img
+                                      src={logoSrc}
+                                      alt={brand}
+                                      className="h-8 w-auto object-contain"
+                                    />
+                                  ) : (
+                                    <span className="text-[#0b2343] text-sm font-medium">{brand}</span>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
 
                   {/* Product List */}
                   <div className="mb-6">

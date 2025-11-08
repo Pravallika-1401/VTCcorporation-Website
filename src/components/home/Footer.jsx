@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { href, Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Whatsapp } from 'lucide-react';
 import { createPageUrl } from '../../utils';
 
 export default function Footer() {
@@ -29,7 +30,8 @@ export default function Footer() {
     { icon: Facebook, label: 'Facebook', href: '#' },
     { icon: Instagram, label: 'Instagram', href: '#' },
     { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Twitter, label: 'Twitter', href: '#' }
+    { icon: Twitter, label: 'Twitter', href: '#' },
+    { icon: Whatsapp, label: 'WhatsApp', href: 'https://wa.me/919876543210' }
   ];
 
   return (
@@ -54,9 +56,11 @@ export default function Footer() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-[#bba14f] to-[#d4b870] rounded-lg flex items-center justify-center">
-                <span className="text-2xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  V
-                </span>
+                  <img
+                      src="/src/assets/logo.png"
+                      alt="VTC Corporation Logo"
+                      className="w-12 h-12 object-contain rounded-lg shadow-lg"
+                    />
               </div>
               <div>
                 <h3
@@ -185,6 +189,11 @@ export default function Footer() {
               <button className="text-gray-300 hover:text-[#bba14f] transition-colors">
                 Terms of Service
               </button>
+            </div>
+            <div>
+              <h1 className="text-gray-300 hover:text-[#bba14f] transition-colors">
+                Developed by DESIGN BLOCKS
+              </h1>
             </div>
           </div>
         </div>

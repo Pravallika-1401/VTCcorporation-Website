@@ -49,9 +49,14 @@ export default function Header() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-[#0b2343] to-[#008c94] rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-2xl font-bold text-[#bba14f]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    V
-                  </span>
+                  {/* <span className="text-2xl font-bold text-[#bba14f]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <img src="logo.png"></img>
+                  </span> */}
+                  <img
+                      src="/src/assets/logo.png"
+                      alt="VTC Corporation Logo"
+                      className="w-12 h-12 object-contain rounded-lg shadow-lg"
+                    />
                 </div>
                 <div className="flex flex-col">
                   <span
@@ -94,12 +99,12 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link
+            {/* <Link
               to={createPageUrl('Contact')}
               className="ml-4 px-6 py-2.5 bg-gradient-to-r from-[#bba14f] to-[#d4b870] text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               Get Quote
-            </Link>
+            </Link> */}
           </motion.div>
 
           {/* Mobile Menu Button */}
