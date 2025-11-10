@@ -199,11 +199,25 @@ export default function Footer() {
                 Terms of Service
               </button>
             </div>
-            <div>
+            {/* <div>
               <h1 className="text-gray-300 hover:text-[#bba14f] transition-colors">
                 Designed and Developed by DESIGN BLOCKS
               </h1>
+            </div> */}
+            <div>
+              <h1 className="text-gray-300 transition-colors">
+                Designed and Developed by{" "}
+                <a
+                  href="https://designblocks.in/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-[#bba14f] transition-colors"
+                >
+                  DESIGN BLOCKS
+                </a>
+              </h1>
             </div>
+
           </div>
         </div>
       </div>
