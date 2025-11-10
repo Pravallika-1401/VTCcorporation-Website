@@ -1,50 +1,86 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
+import floor from "../../assets/v25.jpg";
+import plumbing from "../../assets/v10.jpg";
+import tiles from "../../assets/v23.jpg";
+import electrical from "../../assets/v1.jpg";
 
 const projects = [
+  {
+    id: 2,
+    title: 'Premium Marble Flooring',
+    category: 'Tiles',
+    // image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+    image: floor
+  },
+  {
+    id: 4,
+    title: 'Commercial Plumbing Project',
+    category: 'Plumbing',
+    // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80'
+    image: plumbing
+  },
+   {
+    id: 6,
+    title: 'Designer Wall Tiles',
+    category: 'Tiles',
+    // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80'
+    image: tiles
+  },
+  {
+    id: 7,
+    title: 'Smart Home Integration',
+    category: 'Electrical',
+    // image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80'
+    image: electrical
+  },
   {
     id: 1,
     title: 'Luxury Villa Electrical Installation',
     category: 'Electrical',
     image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80'
   },
-  {
-    id: 2,
-    title: 'Premium Marble Flooring',
-    category: 'Tiles',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
-  },
+  // {
+  //   id: 2,
+  //   title: 'Premium Marble Flooring',
+  //   category: 'Tiles',
+  //   // image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+  //   image: floor
+  // },
   {
     id: 3,
     title: 'Modern Bathroom Suite',
     category: 'Sanitaryware',
     image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80'
   },
-  {
-    id: 4,
-    title: 'Commercial Plumbing Project',
-    category: 'Plumbing',
-    image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80'
-  },
+  // {
+  //   id: 4,
+  //   title: 'Commercial Plumbing Project',
+  //   category: 'Plumbing',
+  //   // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80'
+  //   image: plumbing
+  // },
   {
     id: 5,
     title: 'Contemporary Kitchen Setup',
     category: 'Appliances',
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'
   },
-  {
-    id: 6,
-    title: 'Designer Wall Tiles',
-    category: 'Tiles',
-    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80'
-  },
-  {
-    id: 7,
-    title: 'Smart Home Integration',
-    category: 'Electrical',
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80'
-  },
+  // {
+  //   id: 6,
+  //   title: 'Designer Wall Tiles',
+  //   category: 'Tiles',
+  //   // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80'
+  //   image: tiles
+  // },
+  // {
+  //   id: 7,
+  //   title: 'Smart Home Integration',
+  //   category: 'Electrical',
+  //   // image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80'
+  //   image: electrical
+  // },
   {
     id: 8,
     title: 'Luxury Bathroom Fixtures',

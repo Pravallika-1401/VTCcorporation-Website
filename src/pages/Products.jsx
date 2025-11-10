@@ -30,6 +30,7 @@ import Doors from "../assets/Doors.png";
 import Plumbing from "../assets/P1.png";
 import Sanitary from "../assets/s1.png";
 import Appliance from "../assets/A1.png";
+import { link } from 'framer-motion/client';
 
 
 const categories = [
@@ -75,6 +76,9 @@ const categories = [
     image: Sanitary,
     gradient: 'from-[#0b2343] to-[#008c94]',
     brands: ['Cera', 'Franke', 'Kohler', 'Nikolas'],
+    // brands: [
+    // { name: 'Geberit', link: '/brochures/Ceraproducts.pdf' },
+    // ],
     products: ['Wash Basins', 'Water Closets', 'Kitchen Sinks', 'Faucets', 'Showers', 'Bath Accessories']
   },
   {
@@ -129,7 +133,7 @@ export default function Products() {
             </p>
 
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto">
+            {/* <div className="max-w-2xl mx-auto">
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -140,7 +144,7 @@ export default function Products() {
                   className="w-full pl-12 pr-4 py-4 rounded-xl border-none focus:ring-2 focus:ring-[#bba14f] text-gray-700 shadow-lg"
                 />
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>

@@ -83,7 +83,7 @@ export default function About() {
               About VTC Corporation
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Building dreams with premium materials and exceptional service since 2008
+              Building dreams with premium materials and exceptional service since 1996
             </p>
           </motion.div>
         </div>
@@ -103,7 +103,7 @@ export default function About() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
+                  src="/src/assets/vtcoffice.png"
                   alt="VTC Corporation Building"
                   className="w-full h-[600px] object-cover"
                 />

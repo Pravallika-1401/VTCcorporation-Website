@@ -3,51 +3,233 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
 import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
+import floor from "../assets/v25.jpg";
+import plumbing from "../assets/v10.jpg";
+import tiles from "../assets/v23.jpg";
+import electrical from "../assets/v1.jpg";
+
+import v3 from "../assets/v3.jpg";
+import v4 from "../assets/v4.jpg";
+import v5 from "../assets/v5.jpg";
+import v6 from "../assets/v6.jpg";
+import v7 from "../assets/v7.jpg";
+import v8 from "../assets/v8.jpg";
+import v9 from "../assets/v9.jpg";
+import v11 from "../assets/v11.jpg";
+import v12 from "../assets/v12.jpg";
+import v13 from "../assets/v13.jpg";
+import v14 from "../assets/v14.jpg";
+import v15 from "../assets/v15.jpg";
+import v16 from "../assets/v16.jpg";
+import v17 from "../assets/v17.jpg";
+import v18 from "../assets/v18.jpg";
+import v19 from "../assets/v19.jpg";
+import v20 from "../assets/v20.jpg";
+import v21 from "../assets/v21.jpg";
+import v22 from "../assets/v22.jpg";
+import v24 from "../assets/v24.jpg";
+import v26 from "../assets/v26.jpg";
+import v30 from "../assets/v30.jpg";
+
 
 const projects = [
-  {
-    id: 1,
-    title: 'Luxury Villa Electrical Installation',
-    category: 'Electrical',
-    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80'
-  },
+  // {
+  //   id: 1,
+  //   title: 'Luxury Villa Electrical Installation',
+  //   category: 'Electrical',
+  //   image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80'
+  // },
   {
     id: 2,
     title: 'Premium Marble Flooring',
     category: 'Tiles',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+    // image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+    image: floor
   },
-  {
-    id: 3,
-    title: 'Modern Bathroom Suite',
-    category: 'Sanitaryware',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80'
-  },
+  // {
+  //   id: 3,
+  //   title: 'Modern Bathroom Suite',
+  //   category: 'Sanitaryware',
+  //   image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80'
+  // },
   {
     id: 4,
     title: 'Commercial Plumbing Project',
     category: 'Plumbing',
-    image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80'
+    // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80'
+    image : plumbing
   },
-  {
-    id: 5,
-    title: 'Contemporary Kitchen Setup',
-    category: 'Appliances',
-    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'
-  },
+  // {
+  //   id: 5,
+  //   title: 'Contemporary Kitchen Setup',
+  //   category: 'Appliances',
+  //   image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'
+  // },
   {
     id: 6,
     title: 'Designer Wall Tiles',
     category: 'Tiles',
-    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80'
+    // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80'
+    image: tiles
   },
   {
     id: 7,
     title: 'Smart Home Integration',
     category: 'Electrical',
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80'
+    // image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80'
+    image: electrical
+  },
+  // {
+  //   id: 8,
+  //   title: 'Luxury Bathroom Fixtures',
+  //   category: 'Sanitaryware',
+  //   image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80'
+  // },
+  // {
+  //   id: 9,
+  //   title: 'Modern Office Electrical',
+  //   category: 'Electrical',
+  //   image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80'
+  // },
+  // {
+  //   id: 10,
+  //   title: 'Residential Plumbing System',
+  //   category: 'Plumbing',
+  //   image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'
+  // },
+  // {
+  //   id: 11,
+  //   title: 'Elegant Tile Patterns',
+  //   category: 'Tiles',
+  //   image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80'
+  // },
+  // {
+  //   id: 12,
+  //   title: 'Premium Kitchen Appliances',
+  //   category: 'Appliances',
+  //   image: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80'
+  // },
+  {
+    id: 13,
+    title: 'Modern Close-Coupled Toilets',
+    category: 'Sanitaryware',
+    image: v3
   },
   {
+    id: 14,
+    title: 'Wall-Hung Toilet & Basin Set',
+    category: 'Sanitaryware',
+    image: v4
+  },
+  {
+    id: 15,
+    title: 'Pedestal Wash Basins',
+    category: 'Sanitaryware',
+    image: v5
+  },
+  {
+    id: 16,
+    title: 'Counter-Top Vessel Sinks',
+    category: 'Sanitaryware',
+    image: v6
+  },
+  {
+    id: 18,
+    title: 'Chrome Shower Mixers & Faucets',
+    category: 'Sanitaryware',
+    image: v8
+  },
+  {
+    id: 20,
+    title: 'SWR Pipe Fittings & Jugs',
+    category: 'Plumbing',
+    image: v11
+  },
+  {
+    id: 21,
+    title: 'PVC Pipe Clamps & Sockets',
+    category: 'Plumbing',
+    image: v12
+  },
+  {
+    id: 22,
+    title: 'Large PVC SWR Couplers & Tees',
+    category: 'Plumbing',
+    image: v13
+  },
+  {
+    id: 23,
+    title: 'Drainage Inspection Components',
+    category: 'Plumbing',
+    image: v14
+  },
+  {
+    id: 24,
+    title: 'Compact Bathroom Mockup',
+    category: 'Sanitaryware',
+    image: v15
+  },
+  {
+    id: 25,
+    title: 'Aisle of Bagged Fittings',
+    category: 'Plumbing',
+    image: v16
+  },
+  {
+    id: 26,
+    title: 'Shower Diverters and Taps',
+    category: 'Sanitaryware',
+    image: v17
+  },
+  {
+    id: 27,
+    title: '110MM & 75MM PVC End Caps',
+    category: 'Plumbing',
+    image: v18
+  },
+  {
+    id: 28,
+    title: 'Assorted Bagged Fittings Aisle',
+    category: 'Plumbing',
+    image: v19
+  },
+  {
+    id: 29,
+    title: '75MM PVC Pipe Elbows/Bends',
+    category: 'Plumbing',
+    image: v20
+  },
+  {
+    id: 30,
+    title: 'Packaged PVC Reducer Sockets',
+    category: 'Plumbing',
+    image: v21
+  },
+  {
+    id: 31,
+    title: 'Shower Heads and Premium Faucets',
+    category: 'Sanitaryware',
+    image: v22
+  },
+  {
+    id: 32,
+    title: '75MM PVC Tees and Bends',
+    category: 'Plumbing',
+    image: v24
+  },
+  {
+  id: 27,
+  title: "Water Storage Tanks",
+  category: "Plumbing",
+  image: v30
+},
+    {
+    id: 1,
+    title: 'Luxury Villa Electrical Installation',
+    category: 'Electrical',
+    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80'
+  },
+    {
     id: 8,
     title: 'Luxury Bathroom Fixtures',
     category: 'Sanitaryware',
@@ -76,7 +258,19 @@ const projects = [
     title: 'Premium Kitchen Appliances',
     category: 'Appliances',
     image: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80'
-  }
+  },
+  {
+    id: 5,
+    title: 'Contemporary Kitchen Setup',
+    category: 'Appliances',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'
+  },
+  {
+    id: 3,
+    title: 'Modern Bathroom Suite',
+    category: 'Sanitaryware',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80'
+  },
 ];
 
 const categories = ['All', 'Electrical', 'Tiles', 'Plumbing', 'Sanitaryware', 'Appliances'];

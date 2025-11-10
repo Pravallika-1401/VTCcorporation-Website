@@ -722,18 +722,64 @@
 
 
 
+// import React from 'react';
+// import { Routes, Route, Navigate } from 'react-router-dom';
+// import { createPageUrl } from './utils';
+
+// // Import all page components
+// import Home from './pages/Home';
+// import About from './pages/About';
+// import Products from './pages/Products';
+// import ProductDetail from './pages/ProductDetail';
+// import Gallery from './pages/Gallery';
+// import Contact from './pages/Contact';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Routes>
+//         {/* Home Page */}
+//         <Route path={createPageUrl('Home')} element={<Home />} />
+//         <Route path="/" element={<Navigate to={createPageUrl('Home')} replace />} />
+
+//         {/* About Page */}
+//         <Route path={createPageUrl('About')} element={<About/>} />
+
+//         {/* Products Pages */}
+//         <Route path={createPageUrl('Products')} element={<Products />} />
+//         <Route path={createPageUrl('ProductDetail')} element={<ProductDetail />} />
+
+//         {/* Gallery Page */}
+//         <Route path={createPageUrl('Gallery')} element={<Gallery />} />
+
+//         {/* Contact Page */}
+//         <Route path={createPageUrl('Contact')} element={<Contact />} />
+
+//         {/* 404 - Redirect to Home */}
+//         <Route path="*" element={<Navigate to={createPageUrl('Home')} replace />} />
+//       </Routes>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+ 
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { createPageUrl } from './utils';
-
+ 
 // Import all page components
 import Home from './pages/Home';
-import About from './pages/About';
+import AboutUs from './pages/AboutUs';  
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
-
+ 
 function App() {
   return (
     <div className="App">
@@ -741,25 +787,26 @@ function App() {
         {/* Home Page */}
         <Route path={createPageUrl('Home')} element={<Home />} />
         <Route path="/" element={<Navigate to={createPageUrl('Home')} replace />} />
-
-        {/* About Page */}
-        <Route path={createPageUrl('About')} element={<About />} />
-
+ 
+        {/* About Page - Using AboutUs component */}
+        <Route path={createPageUrl('About')} element={<AboutUs />} />
+ 
         {/* Products Pages */}
         <Route path={createPageUrl('Products')} element={<Products />} />
         <Route path={createPageUrl('ProductDetail')} element={<ProductDetail />} />
-
+ 
         {/* Gallery Page */}
         <Route path={createPageUrl('Gallery')} element={<Gallery />} />
-
+ 
         {/* Contact Page */}
         <Route path={createPageUrl('Contact')} element={<Contact />} />
-
+ 
         {/* 404 - Redirect to Home */}
         <Route path="*" element={<Navigate to={createPageUrl('Home')} replace />} />
       </Routes>
     </div>
   );
 }
-
+ 
 export default App;
+ 
