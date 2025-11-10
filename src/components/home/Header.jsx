@@ -142,7 +142,7 @@ export default function Header() {
                   className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium ${
                     location.pathname === link.path
                       ? 'bg-[#0b2343]/10 text-[#0b2343]'
-                      : 'text-gray-700 hover:bg-[#0b2343]/5 hover:text-[#0b2343]'
+                      : 'text-white-700 hover:bg-[#0b2343]/5 hover:text-[#0b2343]'
                   }`}
                 >
                   {link.name}
