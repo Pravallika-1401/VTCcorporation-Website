@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Award, Target, Eye, Users, Handshake, TrendingUp, Shield, CheckCircle, Heart, Lightbulb, Clock } from 'lucide-react';
 import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
+import vtcoffice from "../../assets/vtcoffice.png";
 
 const stats = [
   { icon: Award, label: 'Years of Excellence', value: '15+', color: 'from-[#bba14f] to-[#d4b870]' },
@@ -103,7 +104,7 @@ export default function About() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/src/assets/vtcoffice.png"
+                  src={vtcoffice}
                   alt="VTC Corporation Building"
                   className="w-full h-[600px] object-cover"
                 />
