@@ -176,7 +176,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#bba14f] flex-shrink-0" />
-                <a href="mailto:sales@vtccorp.com" className="text-gray-300 hover:text-[#bba14f] transition-colors">
+                <a href="mailto:vtc_corporation@yahoo.com" className="text-gray-300 hover:text-[#bba14f] transition-colors">
                   vtc_corporation@yahoo.com
                 </a>
               </li>
