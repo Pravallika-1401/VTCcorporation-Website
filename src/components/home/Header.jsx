@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPageUrl } from '../../utils';
-
+import logo from "../../assets/logo.png";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +53,8 @@ export default function Header() {
                     <img src="logo.png"></img>
                   </span> */}
                   <img
-                      src="/src/assets/logo.png"
+                      // src="/src/assets/logo.png"
+                      src= {logo}
                       alt="VTC Corporation Logo"
                       className="w-12 h-12 object-contain rounded-lg shadow-lg"
                     />

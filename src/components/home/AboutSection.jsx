@@ -505,6 +505,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Building2, TrendingUp } from 'lucide-react';
+import vtcoffice from "../../assets/vtcoffice.png";
 
 //Brands log
 import polycab from "../../assets/polycab.png";
@@ -623,7 +624,7 @@ export default function AboutSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/src/assets/vtcoffice.png"
+                src={vtcoffice}
                 alt="VTC Corporation Building"
                 className="w-full h-[600px] object-cover"
               />

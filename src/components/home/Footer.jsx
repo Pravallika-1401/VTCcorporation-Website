@@ -4,6 +4,7 @@ import { href, Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 
 import { createPageUrl } from '../../utils';
+import logo from "../../assets/logo.png";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -65,7 +66,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-[#bba14f] to-[#d4b870] rounded-lg flex items-center justify-center">
                   <img
-                      src="/src/assets/logo.png"
+                      src={logo}
                       alt="VTC Corporation Logo"
                       className="w-12 h-12 object-contain rounded-lg shadow-lg"
                     />
