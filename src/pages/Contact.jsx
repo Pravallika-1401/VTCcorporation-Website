@@ -39,13 +39,13 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+91 9876543210', '+91 9876543211'],
+      details: ['+91 9100023692'],
       gradient: 'from-[#bba14f] to-[#d4b870]'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['sales@vtccorp.com', 'info@vtccorp.com'],
+      details: ['vtc_corporation@yahoo.com'],
       gradient: 'from-[#008c94] to-[#00b8a9]'
     },
     {

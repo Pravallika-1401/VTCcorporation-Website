@@ -171,13 +171,13 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#bba14f] flex-shrink-0" />
                 <a href="tel:+919876543210" className="text-gray-300 hover:text-[#bba14f] transition-colors">
-                  +91 93989 22734
+                  +91 9100023692
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#bba14f] flex-shrink-0" />
                 <a href="mailto:sales@vtccorp.com" className="text-gray-300 hover:text-[#bba14f] transition-colors">
-                  sales@vtccorp.com
+                  vtc_corporation@yahoo.com
                 </a>
               </li>
             </ul>
