@@ -16,7 +16,7 @@ const slides = [
     description: 'Complete electrical systems from leading manufacturers',
     // image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&q=80',
     image: Electricals,
-    gradient: 'from-[#0b2343]/90 to-[#008c94]/80'
+    // gradient: 'from-[#0b2343]/90 to-[#008c94]/80'
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const slides = [
     description: 'Transform spaces with elegant flooring and wall solutions',
     // image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=1920&q=80',
     image: Doors,
-    gradient: 'from-[#0b2343]/90 to-[#bba14f]/70'
+    // gradient: 'from-[#0b2343]/90 to-[#bba14f]/70'
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const slides = [
     description: 'Professional-grade pipes, fittings and plumbing solutions',
     // image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1920&q=80',
     image: Plumbing,
-    gradient: 'from-[#008c94]/70 to-[#00b8a9]/60'
+    // gradient: 'from-[#008c94]/70 to-[#00b8a9]/60'
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const slides = [
     description: 'Premium bathroom and kitchen fixtures for modern living',
     // image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1920&q=80',
     image: Sanitary,
-    gradient: 'from-[#0b2343]/90 to-[#1a3a5c]/85'
+    // gradient: 'from-[#0b2343]/90 to-[#1a3a5c]/85'
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const slides = [
     description: 'Energy-efficient solutions for contemporary homes',
     // image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80',
     image : Appliance,
-    gradient: 'from-[#bba14f]/80 to-[#0b2343]/50'
+    // gradient: 'from-[#bba14f]/80 to-[#0b2343]/50'
   }
 ];
 
@@ -108,7 +108,7 @@ export default function HeroSection() {
           />
           
           {/* Gradient Overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-r ${slides[currentSlide].gradient}`} />
+          {/* <div className={`absolute inset-0 bg-gradient-to-r ${slides[currentSlide].gradient}`} /> */}
 
           {/* Content */}
           <div className="relative h-full flex items-center">
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 className="max-w-3xl"
               >
                 {/* Category Badge */}
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -130,10 +130,21 @@ export default function HeroSection() {
                   <span className="text-white font-medium text-sm tracking-wide">
                     {slides[currentSlide].category}
                   </span>
+                </motion.div> */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#0b2343]/90 backdrop-blur-md rounded-full mb-6 shadow-md"
+                >
+                  <Sparkles className="w-4 h-4 text-[#bba14f]" />
+                  <span className="text-white font-semibold text-sm tracking-wide">
+                    {slides[currentSlide].category}
+                  </span>
                 </motion.div>
 
                 {/* Main Heading */}
-                <motion.h1
+                {/* <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -141,14 +152,32 @@ export default function HeroSection() {
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   {slides[currentSlide].title}
+                </motion.h1> */}
+                 <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+                  style={{ fontFamily: "'Playfair Display', serif", textShadow: '2px 2px 4px rgba(255,255,255,0.8)' }}
+                >
+                  {slides[currentSlide].title}
                 </motion.h1>
 
                 {/* Description */}
-                <motion.p
+                {/* <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="text-xl text-gray-100 mb-8 leading-relaxed"
+                >
+                  {slides[currentSlide].description}
+                </motion.p> */}
+                 <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="text-xl text-gray-800 mb-8 leading-relaxed font-semibold"
+                  style={{ textShadow: '1px 1px 3px rgba(255,255,255,0.8)' }}
                 >
                   {slides[currentSlide].description}
                 </motion.p>

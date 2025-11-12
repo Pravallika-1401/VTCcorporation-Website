@@ -203,50 +203,56 @@ export default function PhotoGallery() {
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative max-w-5xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute -top-12 right-0 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300"
-              >
-                <X size={24} />
-              </button>
+  {selectedImage && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm"
+      onClick={() => setSelectedImage(null)}
+    >
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="relative max-w-5xl w-full flex flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button - Always visible */}
+        <button
+          onClick={() => setSelectedImage(null)}
+          className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300 z-50"
+        >
+          <X size={24} />
+        </button>
 
-              {/* Image */}
-              <img
-                src={selectedImage.image}
-                alt={selectedImage.title}
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
+        {/* Image - Fits both portrait & landscape */}
+        <img
+          src={selectedImage.image}
+          alt={selectedImage.title}
+          className="w-auto max-w-full max-h-[80vh] rounded-xl shadow-2xl object-contain"
+        />
 
-              {/* Info */}
-              <div className="mt-6 text-center">
-                <p className="text-[#bba14f] text-sm font-semibold mb-2">
-                  {selectedImage.category}
-                </p>
-                <h3 className="text-white text-2xl font-bold">
-                  {selectedImage.title}
-                </h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Info - Always visible below image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mt-4 text-center px-4"
+        >
+          <p className="text-[#bba14f] text-sm font-semibold mb-1">
+            {selectedImage.category}
+          </p>
+          <h3 className="text-white text-xl sm:text-2xl font-bold leading-snug">
+            {selectedImage.title}
+          </h3>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </section>
   );
 }

@@ -39,7 +39,7 @@ export default function Footer() {
         </svg>
       ),
       label: 'WhatsApp',
-      href: 'https://wa.me/919876543210' // Replace with your actual WhatsApp number
+      href: 'https://wa.me/919876543210' 
     },
   ];
 
@@ -171,7 +171,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#bba14f] flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-gray-300 hover:text-[#bba14f] transition-colors">
+                <a href="tel:+9100023692" className="text-gray-300 hover:text-[#bba14f] transition-colors">
                   +91 9100023692
                 </a>
               </li>

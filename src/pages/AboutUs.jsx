@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Target, Eye, Users, Handshake, TrendingUp, Shield, CheckCircle } from 'lucide-react';
 import Header from '../components/home/Header';
@@ -84,6 +84,21 @@ export default function AboutUs() {
 
   const ceoImages = [v32, v38];
   const teamImages = [team1, team2, team3];
+
+  useEffect(() => {
+    const ceoTimer = setInterval(() => {
+      setCeoIndex((prev) => (prev + 1) % ceoImages.length);
+    }, 2000); 
+    return () => clearInterval(ceoTimer);
+  }, [ceoImages.length]);
+
+
+  useEffect(() => {
+    const teamTimer = setInterval(() => {
+      setTeamIndex((prev) => (prev + 1) % teamImages.length);
+    }, 2000);
+    return () => clearInterval(teamTimer);
+  }, [teamImages.length]);
 
   const handleCeoDotClick = (index) => setCeoIndex(index);
   const handleTeamDotClick = (index) => setTeamIndex(index);
