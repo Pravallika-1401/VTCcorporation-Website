@@ -242,11 +242,11 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion'; 
 
-import Electricals from "../../assets/E1.png";
+// import Electricals from "../../assets/E1.png";
 import Doors from "../../assets/Doors.png";
 import Plumbing from "../../assets/P1.png";
-import Sanitary from "../../assets/s1.png";
-import Appliance from "../../assets/A1.png";
+// import Sanitary from "../../assets/s1.png";
+// import Appliance from "../../assets/A1.png";
 import Astralimage1 from "../../assets/Astralimage1.png";
 import Astralimage2 from "../../assets/Astralimage2.png";
 import Ceraimg from "../../assets/ceraimg.jpeg";
