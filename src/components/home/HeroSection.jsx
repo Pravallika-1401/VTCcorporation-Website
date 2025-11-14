@@ -254,14 +254,14 @@ import Ceraimg from "../../assets/ceraimg.jpeg";
 const slides = [
   {
     id: 1,
-    category: 'Astra Pipes',
+    category: 'Astral Pipes',
     title: 'Strong & Leak-Proof Plumbing for Every Home',
     description: 'High-quality CPVC, PVC and UPVC pipes engineered for long-lasting performance.',
     image: Astralimage1,
   },
   {
     id: 2,
-    category: 'Astra Pipes',
+    category: 'Astral Pipes',
     title: 'Trusted Pipe Systems for Reliable Water Flow',
     description: 'Premium-grade pipes designed to ensure durability, safety and smooth water distribution.',
     image: Astralimage2,
@@ -439,7 +439,7 @@ export default function HeroSection() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all duration-300 z-10"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 bg-blue/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all duration-300 z-10"
         aria-label="Previous slide"
       >
         <ChevronLeft size={28} />
@@ -447,7 +447,7 @@ export default function HeroSection() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all duration-300 z-10"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 bg-blue/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all duration-300 z-10"
         aria-label="Next slide"
       >
         <ChevronRight size={28} />
