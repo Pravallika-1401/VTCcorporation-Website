@@ -82,7 +82,7 @@ export default function AboutUs() {
   const [ceoIndex, setCeoIndex] = useState(0);
   const [teamIndex, setTeamIndex] = useState(0);
 
-  const ceoImages = [v32, v38];
+  const ceoImages = [v32];
   const teamImages = [team1, team2, team3];
 
   useEffect(() => {
@@ -390,7 +390,8 @@ export default function AboutUs() {
             </div>
 
             {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {/* <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"> */}
+            <div className="hidden">
               {ceoImages.map((_, i) => (
                 <span
                   key={i}

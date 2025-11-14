@@ -37,7 +37,7 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+91 9100023692'],
+      details: ['+91 9100023692','+91 9281452732'],
       gradient: 'from-[#bba14f] to-[#d4b870]'
     },
     {
