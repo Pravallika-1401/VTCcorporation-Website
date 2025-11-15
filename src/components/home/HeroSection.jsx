@@ -1265,7 +1265,7 @@ export default function HeroSection() {
 
           {/* SPARKLE + CATEGORY */}
           <div className="absolute 
-            top-20 sm:top-28 md:top-36 
+            top-24 sm:top-28 md:top-36 
             left-5 sm:left-10 
             z-20"
           >
