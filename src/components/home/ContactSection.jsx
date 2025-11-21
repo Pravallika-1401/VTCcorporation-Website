@@ -149,12 +149,13 @@ export default function ContactSection() {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
+                  required
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#008c94] focus:ring-2 focus:ring-[#008c94]/20 transition-all duration-300 outline-none"
