@@ -1615,11 +1615,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 // import Astralimage2 from "../../assets/2.png";
 // import Ceraimg from "../../assets/ceraimg.jpeg";
 
-import Doors from "../../assets/door1.png";
-import Plumbing from "../../assets/P1.png";
-import Astralimage1 from "../../assets/Astralimage1.png";
-import Astralimage2 from "../../assets/img2.jpg";
+// import Doors from "../../assets/door1.png";
+// import Plumbing from "../../assets/P1.png";
+// import Astralimage1 from "../../assets/Astralimage1.png";
+// import Astralimage2 from "../../assets/img2.jpg";
+// import Ceraimg from "../../assets/ceraimg.jpeg";
+
+import Doors from "../../assets/hi4.png";
+import Plumbing from "../../assets/hi1.png";
+import Astralimage1 from "../../assets/hi3.png";
+import Astralimage2 from "../../assets/hi5.png";
 import Ceraimg from "../../assets/ceraimg.jpeg";
+
 
 const slides = [
   {

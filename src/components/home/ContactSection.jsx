@@ -238,7 +238,6 @@ export default function ContactSection() {
               </button>
             </form>
           </motion.div>
-
           {/* Contact Info & Map */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
