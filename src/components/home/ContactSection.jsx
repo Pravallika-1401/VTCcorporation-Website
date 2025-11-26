@@ -302,11 +302,29 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import axios from "../../api";
+
 
 export default function ContactSection() {
+  const [contact, setContact] = useState(null);
+
+useEffect(() => {
+  loadContact();
+}, []);
+
+async function loadContact() {
+  try {
+    const res = await axios.get("/contact");
+    setContact(res.data);
+  } catch (err) {
+    console.log("Contact Fetch Error:", err);
+  }
+}
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -353,42 +371,93 @@ export default function ContactSection() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+  const res = await axios.post("/contact", formData);
 
-      setTimeout(() => setFormStatus(null), 5000);
-    }, 1500);
+  setFormStatus("success");
+  setFormData({ name: "", email: "", phone: "", message: "" });
+} catch (err) {
+  setFormStatus("error");
+}
+
+setIsSubmitting(false);
+setTimeout(() => setFormStatus(null), 4000);
+
+  
+
+    // // Simulate form submission
+    // setTimeout(() => {
+    //   setFormStatus('success');
+    //   setIsSubmitting(false);
+    //   setFormData({ name: '', email: '', phone: '', message: '' });
+
+    //   setTimeout(() => setFormStatus(null), 5000);
+    // }, 1500);
+
+
+    
   };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Phone',
-      details: ['+91 9100023692', '+91 9281452732'],
-      gradient: 'from-[#bba14f] to-[#d4b870]'
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: ['vtc_corporation@yahoo.com'],
-      gradient: 'from-[#008c94] to-[#00b8a9]'
-    },
-    {
-      icon: MapPin,
-      title: 'Address',
-      details: ['Ground Floor, 31-32-28, Near Captain Ramarao Junction, Dabagardens, Visakhapatnam-530020, Andhra Pradesh, India'],
-      gradient: 'from-[#0b2343] to-[#1a3a5c]'
-    },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sunday: Closed'],
-      gradient: 'from-[#bba14f] to-[#008c94]'
-    }
-  ];
+  // const contactInfo = [
+  //   {
+  //     icon: Phone,
+  //     title: 'Phone',
+  //     details: ['+91 9100023692', '+91 9281452732'],
+  //     gradient: 'from-[#bba14f] to-[#d4b870]'
+  //   },
+  //   {
+  //     icon: Mail,
+  //     title: 'Email',
+  //     details: ['vtc_corporation@yahoo.com'],
+  //     gradient: 'from-[#008c94] to-[#00b8a9]'
+  //   },
+  //   {
+  //     icon: MapPin,
+  //     title: 'Address',
+  //     details: ['Ground Floor, 31-32-28, Near Captain Ramarao Junction, Dabagardens, Visakhapatnam-530020, Andhra Pradesh, India'],
+  //     gradient: 'from-[#0b2343] to-[#1a3a5c]'
+  //   },
+  //   {
+  //     icon: Clock,
+  //     title: 'Business Hours',
+  //     details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sunday: Closed'],
+  //     gradient: 'from-[#bba14f] to-[#008c94]'
+  //   }
+  // ];
+
+const contactInfo = [
+  {
+    icon: Phone,
+    title: "Phone",
+    details: contact?.phone ? [contact.phone] : ['+91 9100023692'],
+    gradient: "from-[#bba14f] to-[#d4b870]",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    details: contact?.email ? [contact.email] : ["vtc_corporation@yahoo.com"],
+    gradient: "from-[#008c94] to-[#00b8a9]",
+  },
+  {
+    icon: MapPin,
+    title: "Address",
+    details: contact?.address
+      ? [contact.address]
+      : [
+          "Ground Floor, 31-32-28, Near Captain Ramarao Junction,",
+          "Dabagardens, Visakhapatnam-530020,",
+          "Andhra Pradesh, India",
+        ],
+    gradient: "from-[#0b2343] to-[#1a3a5c]",
+  },
+  {
+    icon: Clock,
+    title: "Business Hours",
+    details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: Closed"],
+    gradient: "from-[#bba14f] to-[#008c94]",
+  },
+];
+
 
   return (
     <section id="contact" className="py-24 bg-[#eef7fb] relative overflow-hidden">
@@ -600,7 +669,9 @@ export default function ContactSection() {
             <div className="bg-white rounded-2xl p-4 shadow-lg">
               <div className="w-full h-80 bg-gray-200 rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.019004924767!2d83.3030478!3d17.728487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b1ad8d0c15e0f!2sDaba%20Gardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530220%2C%20India!5e0!3m2!1sen!2sin!4v1670000000000!5m2!1sen!2sin"
+                  // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.019004924767!2d83.3030478!3d17.728487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b1ad8d0c15e0f!2sDaba%20Gardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530220%2C%20India!5e0!3m2!1sen!2sin!4v1670000000000!5m2!1sen!2sin"
+                  src={contact?.mapEmbedUrl || `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.019004924767!2d83.3030478!3d17.728487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b1ad8d0c15e0f!2sDaba%20Gardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530220%2C%20India!5e0!3m2!1sen!2sin!4v1670000000000!5m2!1sen!2sin`}
+
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

@@ -714,6 +714,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from "react";
+import axios from "../../api";
+
 
 // Brand Images
 import polycab from "../../assets/polycab.png";
@@ -744,6 +747,17 @@ const brandCards = [
 ];
 
 export default function ProductRange() {
+  const [brands, setBrands] = useState([]);
+
+useEffect(() => {
+  loadBrands();
+}, []);
+
+async function loadBrands() {
+  const res = await axios.get("/brands-home");
+  setBrands(res.data);
+}
+
   return (
     <section id="products" className="py-20 sm:py-24 bg-[#eef7fb] relative overflow-hidden">
       
@@ -794,7 +808,8 @@ export default function ProductRange() {
             lg:grid-cols-4 
             gap-6 sm:gap-8"
         >
-          {brandCards.map((brand, index) => (
+          {/* {brandCards.map((brand, index) => ( */}
+          {(brands.length > 0 ? brands : brandCards).map((brand, index) => (
             <motion.div
               key={brand.name}
               initial={{ opacity: 0, y: 30 }}

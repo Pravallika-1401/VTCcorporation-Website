@@ -437,15 +437,30 @@
 
 
 
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 
 import { createPageUrl } from '../../utils';
 import logo from "../../assets/logo.png";
+import axios from "../../api";
 
 export default function Footer() {
+  const [footer, setFooter] = useState(null);
+  useEffect(() => {
+    loadFooter();
+  }, []);
+
+  async function loadFooter() {
+    try {
+      const res = await axios.get("/footer");
+      setFooter(res.data);
+    } catch (err) {
+      console.error("Footer fetch error:", err);
+    }
+  }
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -506,8 +521,11 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
-              Your trusted partner for premium building materials and home solutions.
-              Serving Andhra Pradesh with excellence for over 15 years.
+              {/* Your trusted partner for premium building materials and home solutions.
+              Serving Andhra Pradesh with excellence for over 15 years. */}
+            {footer?.description || `Your trusted partner for premium building materials and home solutions.
+Serving Andhra Pradesh with excellence for over 15 years.`}
+
             </p>
 
             {/* Social icons responsive */}

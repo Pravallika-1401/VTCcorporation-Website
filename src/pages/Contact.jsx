@@ -292,11 +292,15 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
+
+import axios from "../api";
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -307,6 +311,20 @@ export default function Contact() {
   });
   const [formStatus, setFormStatus] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contact, setContact] = useState(null);
+  useEffect(() => {
+  loadContact();
+}, []);
+
+async function loadContact() {
+  try {
+    const res = await axios.get("/contact");
+    setContact(res.data);
+  } catch (err) {
+    console.log("Contact Fetch Error:", err);
+  }
+}
+
 
   const handleChange = (e) => {
     setFormData({
@@ -356,32 +374,67 @@ export default function Contact() {
     }, 1500);
   };
 
+  // const contactInfo = [
+  //   {
+  //     icon: Phone,
+  //     title: 'Phone',
+  //     details: ['+91 9100023692', '+91 9281452732'],
+  //     gradient: 'from-[#bba14f] to-[#d4b870]'
+  //   },
+  //   {
+  //     icon: Mail,
+  //     title: 'Email',
+  //     details: ['vtc_corporation@yahoo.com'],
+  //     gradient: 'from-[#008c94] to-[#00b8a9]'
+  //   },
+  //   {
+  //     icon: MapPin,
+  //     title: 'Address',
+  //     details: ['Ground Floor, 31-32-28', 'Near Captain Ramarao Junction', 'Dabagardens, Visakhapatnam-530020', 'Andhra Pradesh, India'],
+  //     gradient: 'from-[#0b2343] to-[#1a3a5c]'
+  //   },
+  //   {
+  //     icon: Clock,
+  //     title: 'Business Hours',
+  //     details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sunday: Closed'],
+  //     gradient: 'from-[#bba14f] to-[#008c94]'
+  //   }
+  // ];
+  
   const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Phone',
-      details: ['+91 9100023692', '+91 9281452732'],
-      gradient: 'from-[#bba14f] to-[#d4b870]'
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: ['vtc_corporation@yahoo.com'],
-      gradient: 'from-[#008c94] to-[#00b8a9]'
-    },
-    {
-      icon: MapPin,
-      title: 'Address',
-      details: ['Ground Floor, 31-32-28', 'Near Captain Ramarao Junction', 'Dabagardens, Visakhapatnam-530020', 'Andhra Pradesh, India'],
-      gradient: 'from-[#0b2343] to-[#1a3a5c]'
-    },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sunday: Closed'],
-      gradient: 'from-[#bba14f] to-[#008c94]'
-    }
-  ];
+  {
+    icon: Phone,
+    title: 'Phone',
+    details: contact?.phone ? [contact.phone] : ['+91 9100023692', '+91 9281452732'],
+    gradient: 'from-[#bba14f] to-[#d4b870]'
+  },
+  {
+    icon: Mail,
+    title: 'Email',
+    details: contact?.email ? [contact.email] : ['vtc_corporation@yahoo.com'],
+    gradient: 'from-[#008c94] to-[#00b8a9]'
+  },
+  {
+    icon: MapPin,
+    title: 'Address',
+    details: contact?.address
+      ? [contact.address]
+      : [
+          'Ground Floor, 31-32-28',
+          'Near Captain Ramarao Junction',
+          'Dabagardens, Visakhapatnam-530020',
+          'Andhra Pradesh, India'
+        ],
+    gradient: 'from-[#0b2343] to-[#1a3a5c]'
+  },
+  {
+    icon: Clock,
+    title: 'Business Hours',
+    details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sunday: Closed'],
+    gradient: 'from-[#bba14f] to-[#008c94]'
+  }
+];
+
 
   return (
     <div className="min-h-screen bg-[#eef7fb]">
@@ -593,7 +646,7 @@ export default function Contact() {
             >
               <div className="w-full h-full rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.0943890393086!2d83.30468831487858!3d17.724226987717943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6b0af%3A0x8c2c464094d0b0db!2sDabagardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530020!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src={contact?.mapEmbedUrl || `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.0943890393086!2d83.30468831487858!3d17.724226987717943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6b0af%3A0x8c2c464094d0b0db!2sDabagardens%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530020!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin`}
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: '600px' }}

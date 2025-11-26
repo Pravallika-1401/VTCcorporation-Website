@@ -687,9 +687,11 @@
 
 
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import axios from "../api";
+
 
 import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
@@ -724,6 +726,20 @@ const brandCards = [
 ];
 
 export default function Products() {
+  const [brands, setBrands] = useState([]);
+  useEffect(() => {
+  loadBrands();
+}, []);
+
+async function loadBrands() {
+  try {
+    const res = await axios.get("/products");   // API endpoint 
+    setBrands(res.data);
+  } catch (err) {
+    console.log("Products Fetch Error:", err);
+  }
+}
+
   return (
     <div className="min-h-screen bg-[#eef7fb]">
       <Header />
@@ -780,7 +796,10 @@ export default function Products() {
             gap-6 sm:gap-8
             items-stretch
           ">
-            {brandCards.map((brand, index) => (
+            {/* {brandCards.map((brand, index) => ( */}
+            {/* {brands.map((brand, index) => ( */}
+            {(brands.length > 0 ? brands : brandCards).map((brand, index) => (
+
               
               <Link key={brand.slug} to={`/products/${brand.slug}`} className="block h-full">
                 <motion.div

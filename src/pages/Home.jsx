@@ -54,6 +54,8 @@ export default function Home() {
     };
   }, []);
 
+  
+
   return (
     <div className="min-h-screen flex flex-col bg-[#eef7fb]">
       {/* Header */}

@@ -10,6 +10,7 @@ import v32 from "../assets/v32.jpg";
 import v33 from "../assets/v33.jpg";
 import v34 from "../assets/v34.jpg";
 import v38 from "../assets/v38.jpg";
+import axios from "../api";
 
 
 
@@ -78,12 +79,31 @@ const milestones = [
 // ];
 
 export default function AboutUs() {
- 
+ const [about, setAbout] = useState(null);
+
   const [ceoIndex, setCeoIndex] = useState(0);
   const [teamIndex, setTeamIndex] = useState(0);
 
-  const ceoImages = [v32];
+  // const ceoImages = [v32];
+  // const ceoImages = [about?.imageUrl || v32];
+  const ceoImages = [about?.imageUrl ? about.imageUrl : v32];
+
+
   const teamImages = [team1, team2, team3];
+
+ useEffect(() => {
+  loadAbout();
+}, []);
+
+async function loadAbout() {
+  try {
+    const res = await axios.get("/aboutpage");
+    setAbout(res.data);
+  } catch (err) {
+    console.log("About Page Fetch Error:", err);
+  }
+}
+
 
   useEffect(() => {
     const ceoTimer = setInterval(() => {
@@ -127,10 +147,13 @@ export default function AboutUs() {
               className="text-5xl sm:text-6xl font-bold text-white mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              About VTC Corporation
+              {/* About VTC Corporation */}
+              {about?.pageTitle || "About VTC Corporation"}
+
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Building dreams with premium materials and exceptional service since 1996
+              {/* Building dreams with premium materials and exceptional service since 1996 */}
+              {about?.heroText || "Building dreams with premium materials and exceptional service since 1996"}
             </p>
           </motion.div>
         </div>
@@ -155,9 +178,13 @@ export default function AboutUs() {
                 Our Mission
               </h2>
               <p className="text-gray-200 leading-relaxed text-lg">
-                To provide high-quality building materials and home solutions at competitive prices, 
+                {/* To provide high-quality building materials and home solutions at competitive prices, 
                 backed by expert guidance and reliable service. We aim to be the trusted partner for 
-                contractors, builders, and homeowners in creating spaces that last generations.
+                contractors, builders, and homeowners in creating spaces that last generations. */}
+                {about?.mission || `To provide high-quality building materials and home solutions at competitive prices, 
+                backed by expert guidance and reliable service. We aim to be the trusted partner for 
+                contractors, builders, and homeowners in creating spaces that last generations. `}
+
               </p>
             </motion.div>
 
@@ -175,11 +202,17 @@ export default function AboutUs() {
               >
                 Our Vision
               </h2>
-              <p className="text-gray-100 leading-relaxed text-lg">
+              {/* <p className="text-gray-100 leading-relaxed text-lg">
                 To become South India's most trusted and innovative building materials distributor, 
                 setting industry standards in quality, service, and sustainability. We envision a 
                 future where every construction project has access to world-class materials.
-              </p>
+              </p> */}
+              <p className="text-gray-100 leading-relaxed text-lg">
+  {about?.vision || `To become South India's most trusted and innovative building materials distributor,
+  setting industry standards in quality, service, and sustainability. We envision a future where
+  every construction project has access to world-class materials.`}
+</p>
+
             </motion.div>
           </div>
         </div>
@@ -566,3 +599,7 @@ export default function AboutUs() {
     </div>
   );
 }
+
+
+
+

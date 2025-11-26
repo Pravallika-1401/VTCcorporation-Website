@@ -771,10 +771,12 @@
 
  
 import React from 'react';
+import { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Award, Users, Building2, TrendingUp } from 'lucide-react';
 import vtcoffice from "../../assets/vtcoffice.png";
- 
+import axios from "../../api";
+
 // Brand Logos
 import polycab from "../../assets/polycab.png";
 import schneider from "../../assets/schneider.png";
@@ -807,7 +809,11 @@ import lansum from "../../assets/lansum.png";
 import radisson from "../../assets/radisson.png";
 import mkbuilders from "../../assets/mkbuilders.png";
 import iim from "../../assets/iim.png";
- 
+
+
+
+
+
 const trusted = [
   varun, mvvbuilders, karlan, navaratna, abhiram, chalamaji,
   apgovt, lansum, radisson, mkbuilders, iim,
@@ -842,6 +848,16 @@ const stats = [
 ];
  
 export default function AboutSection() {
+  const [about, setAbout] = useState(null);
+  useEffect(() => {
+  loadAbout();
+}, []);
+
+async function loadAbout() {
+  const res = await axios.get("/about-home");
+  setAbout(res.data);
+}
+
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden pt-0">
  
@@ -937,19 +953,22 @@ export default function AboutSection() {
               className="text-4xl sm:text-5xl font-bold text-[#0b2343] mb-6 leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Building Trust, Delivering Excellence
+              {/* Building Trust, Delivering Excellence */}
+              {about?.title || "Building Trust, Delivering Excellence"}
             </h2>
  
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              VTC Corporation is a trusted distributor of building materials and home solutions across Andhra Pradesh.
+              {/* VTC Corporation is a trusted distributor of building materials and home solutions across Andhra Pradesh.
               With 15+ years of service and partnerships with 40+ top brands, we deliver premium products and reliable
-              after-sales support to contractors, builders, and homeowners.
+              after-sales support to contractors, builders, and homeowners. */}
+              {about?.description1 || "VTC Corporation is a trusted distributor..."}
             </p>
  
             <p className="text-lg text-gray-600 mb-12 leading-relaxed">
-              Our comprehensive range includes electrical systems, premium tiles, plumbing solutions, sanitaryware,
+              {/* Our comprehensive range includes electrical systems, premium tiles, plumbing solutions, sanitaryware,
               and modern home appliances. We pride ourselves on quality assurance, competitive pricing, and exceptional
-              customer service that has made us the preferred choice for thousands of projects.
+              customer service that has made us the preferred choice for thousands of projects. */}
+              {about?.description2 || "Our comprehensive range includes..."}
             </p>
  
             {/* Stats */}

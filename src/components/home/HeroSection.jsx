@@ -1608,6 +1608,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from "../../api";
 
 // import Doors from "../../assets/4.png";
 // import Plumbing from "../../assets/3.png";
@@ -1667,7 +1668,19 @@ const slides = [
 ];
 
 export default function HeroSection() {
+
+  
+
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [heroSlides, setHeroSlides] = useState([]);
+  useEffect(() => {
+  loadHero();
+}, []);
+
+async function loadHero() {
+  const res = await axios.get("/hero");
+  setHeroSlides(res.data);
+}
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1678,14 +1691,22 @@ export default function HeroSection() {
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    // setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % (heroSlides.length || slides.length)
+);
+
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    // setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + (heroSlides.length || slides.length)) % (heroSlides.length || slides.length)
+);
+
   };
+if ((heroSlides.length === 0) && slides.length === 0) return null;
 
   return (
+    
     <section id="hero" className="relative w-full bg-[#0f222b] mt-20">
       <div className="relative w-full">
 
@@ -1702,8 +1723,10 @@ export default function HeroSection() {
         >
           <img
             key={currentSlide}
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].category}
+            // src={slides[currentSlide].image}
+            src={(heroSlides.length > 0 ? heroSlides : slides)[currentSlide].image}
+            // alt={slides[currentSlide].category}
+            alt={(heroSlides.length > 0 ? heroSlides : slides)[currentSlide].category}
             className="w-full h-full object-cover transition-opacity duration-700"
           />
 
@@ -1716,7 +1739,8 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#0b2343]/90 backdrop-blur-md rounded-full shadow-lg">
             <Sparkles className="w-4 h-4 text-[#bba14f]" />
             <span className="text-white font-semibold text-xs sm:text-sm tracking-wide">
-              {slides[currentSlide].category}
+              {/* {slides[currentSlide].category} */}
+              {(heroSlides.length > 0 ? heroSlides : slides)[currentSlide].category}
             </span>
           </div>
         </div>
@@ -1755,7 +1779,8 @@ export default function HeroSection() {
 
         {/* Slide Indicators */}
         <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
-          {slides.map((_, index) => (
+          {/* {slides.map((_, index) => ( */}
+          {(heroSlides.length > 0 ? heroSlides : slides).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}

@@ -871,7 +871,6 @@ import { createPageUrl } from './utils';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';  
 import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
@@ -907,7 +906,7 @@ function App() {
 
         {/* Products Pages */}
         <Route path={createPageUrl('Products')} element={<Products />} />
-        <Route path={createPageUrl('ProductDetail')} element={<ProductDetail />} />
+  
 
         {/* BRAND ROUTES — ONLY THESE ADDED */}
         <Route path="/products/astral" element={<Astral />} />

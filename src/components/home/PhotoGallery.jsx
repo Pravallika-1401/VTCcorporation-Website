@@ -264,6 +264,8 @@
 
 
 import React, { useState } from 'react';
+import axios from "../../api";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
 import { Link } from "react-router-dom";
@@ -328,6 +330,20 @@ const projects = [
 
 export default function PhotoGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [gallery, setGallery] = useState([]);
+  useEffect(() => {
+  loadGallery();
+}, []);
+
+async function loadGallery() {
+  try {
+    const res = await axios.get("/gallery");
+    setGallery(res.data);
+  } catch (err) {
+    console.error("Gallery fetch error:", err);
+  }
+}
+
 
   return (
     <section id="gallery" className="py-24 bg-white relative overflow-hidden">
@@ -370,7 +386,8 @@ export default function PhotoGallery() {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <AnimatePresence>
-            {projects.map((project, index) => (
+            {/* {projects.map((project, index) => ( */}
+            {(gallery.length > 0 ? gallery : projects).map((project, index) => (
               <motion.div
                 key={project.id}
                 layout

@@ -457,11 +457,14 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
 import Header from '../components/home/Header';
 import Footer from '../components/home/Footer';
+import axios from "../api";
+
 
 import floor from "../assets/v25.jpg";
 import plumbing from "../assets/v10.jpg";
@@ -529,7 +532,22 @@ const projects = [
 ];
 
 export default function Gallery() {
+  const [gallery, setGallery] = useState(null);
+  
   const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+  loadGallery();
+}, []);
+async function loadGallery() {
+  try {
+    const res = await axios.get("/gallery");
+    setGallery(res.data);
+  } catch (err) {
+    console.log("Gallery Fetch Error:", err);
+  }
+}
+
 
   return (
     <div className="min-h-screen bg-[#eef7fb]">
@@ -574,7 +592,9 @@ export default function Gallery() {
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             <AnimatePresence>
-              {projects.map((project, index) => (
+              {/* {projects.map((project, index) => ( */}
+              {/* {(gallery || projects).map((project, index) => ( */}
+              {(gallery?.length > 0 ? gallery : projects).map((project, index) => (
                 <motion.div
                   key={project.id + '-' + index}
                   layout
@@ -586,7 +606,8 @@ export default function Gallery() {
                   onClick={() => setSelectedImage(project)}
                 >
                   <img
-                    src={project.image}
+                    // src={project.image}
+                    src={project.image || project.imageUrl}
                     alt={project.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
