@@ -12,6 +12,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "axios": "^1.13.2",
+    "cosmicjs": "^5.0.5",
     "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
     "lucide-react": "^0.553.0",
