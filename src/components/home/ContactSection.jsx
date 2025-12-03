@@ -1,9 +1,8 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { getSingleObject, submitFormData } from "../../cosmic";
+import { getSingleObject } from "../../cosmic";
 
 export default function ContactSection() {
   const [contact, setContact] = useState(null);
@@ -14,6 +13,7 @@ export default function ContactSection() {
     message: ''
   });
   const [formStatus, setFormStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -34,75 +34,110 @@ export default function ContactSection() {
       ...formData,
       [e.target.name]: e.target.value
     });
+ 
+    if (formStatus === 'error') {
+      setFormStatus(null);
+      setErrorMessage('');
+    }
   };
 
+  const validateForm = () => {
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage('Please enter a valid email address');
+      setFormStatus("error");
+      return false;
+    }
 
-const validateForm = () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const cleanedPhone = formData.phone.replace(/[^0-9]/g, "");
-
-  if (!emailRegex.test(formData.email)) {
-    setFormStatus("error");
-    return false;
-  }
-
-  if (cleanedPhone.length !== 10) {
-    setFormStatus("error");
-    return false;
-  }
-
-  return true;
-};
-
-
+    // Phone validation
+    const cleanedPhone = formData.phone.replace(/[^0-9]/g, "");
+    
+    if (cleanedPhone.length === 10) {
+      return true;
+    } else if (cleanedPhone.length === 12 && cleanedPhone.startsWith('91')) {
+      return true;
+    } else {
+      setErrorMessage('Please enter a valid 10-digit phone number');
+      setFormStatus("error");
+      return false;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form
     if (!validateForm()) {
-      setTimeout(() => setFormStatus(null), 4000);
+      setTimeout(() => {
+        setFormStatus(null);
+        setErrorMessage('');
+      }, 5000);
       return;
     }
-    setIsSubmitting(true);
-    try {
-      const result = await submitFormData(formData);
-      if (result.success) {
-        setFormStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" });
-      } else {
-        setFormStatus("error");
-      }
-    } catch (err) {
-      setFormStatus("error");
-    }
-    setIsSubmitting(false);
-    setTimeout(() => setFormStatus(null), 4000);
-  };
 
+    setIsSubmitting(true);
+
+    // Prepare email data
+    const emailData = {
+      name: formData.name,
+      email: formData.email,
+      toMail: "vtc_corporation@yahoo.com", 
+      toName: "VTC Corporation",
+      phone: formData.phone,
+      subject: `New Contact Form Submission - ${formData.name}`,
+      message: formData.message
+    };
+
+    try {
+      // Send email via API
+      const response = await fetch("https://api.qrdcard.com/api/url/sendmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailData),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        setErrorMessage('');
+        // Reset form
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setFormStatus('error');
+        setErrorMessage('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error("Email send error:", error);
+      setFormStatus('error');
+      setErrorMessage('An error occurred. Please try again later.');
+    }
+
+    setIsSubmitting(false);
+    
+   
+    setTimeout(() => {
+      setFormStatus(null);
+      setErrorMessage('');
+    }, 5000);
+  };
 
   const getPhoneNumbers = () => {
     if (contact?.phone_numbers && Array.isArray(contact.phone_numbers)) {
-    
       if (contact.phone_numbers[0]?.phone) {
         return contact.phone_numbers.map(p => p.phone);
       }
-      
       return contact.phone_numbers;
     }
-
     return ['+91 9100023692', '+91 9281452732'];
   };
 
-
   const getAddressLines = () => {
     if (contact?.address_lines && Array.isArray(contact.address_lines)) {
-      
       if (contact.address_lines[0]?.line) {
         return contact.address_lines.map(a => a.line);
       }
-     
       return contact.address_lines;
     }
-  
     return [
       "Ground Floor, 31-32-28, Near Captain Ramarao Junction,",
       "Dabagardens, Visakhapatnam-530020,",
@@ -110,17 +145,13 @@ const validateForm = () => {
     ];
   };
 
-
   const getBusinessHours = () => {
     if (contact?.business_hours && Array.isArray(contact.business_hours)) {
-
       if (contact.business_hours[0]?.hour) {
         return contact.business_hours.map(h => h.hour);
       }
-  
       return contact.business_hours;
     }
-
     return ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: Closed"];
   };
 
@@ -153,7 +184,6 @@ const validateForm = () => {
 
   return (
     <section id="contact" className="py-24 bg-[#eef7fb] relative overflow-hidden">
-      
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
@@ -165,7 +195,6 @@ const validateForm = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +222,6 @@ const validateForm = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -210,7 +238,6 @@ const validateForm = () => {
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                   Your Name *
@@ -255,8 +282,9 @@ const validateForm = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#008c94] focus:ring-2 focus:ring-[#008c94]/20 transition-all duration-300 outline-none"
-                  placeholder="+91 9876543210"
+                  placeholder="+91 9876543210 or 9876543210"
                 />
+                <p className="text-xs text-gray-500 mt-1">Enter 10-digit number (with or without +91)</p>
               </div>
 
               <div>
@@ -295,7 +323,9 @@ const validateForm = () => {
                   ) : (
                     <>
                       <AlertCircle className="w-5 h-5" />
-                      <span className="font-medium">Please enter a valid Email & Phone Number.</span>
+                      <span className="font-medium">
+                        {errorMessage || 'Please check your information and try again.'}
+                      </span>
                     </>
                   )}
                 </motion.div>
@@ -370,7 +400,6 @@ const validateForm = () => {
                 />
               </div>
             </div>
-
           </motion.div>
         </div>
       </div>

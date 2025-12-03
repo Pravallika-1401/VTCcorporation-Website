@@ -36,7 +36,7 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Clear errors when user starts typing
+    
     if (formStatus === 'error') {
       setFormStatus(null);
       setErrorMessage('');
@@ -69,13 +69,10 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     
-    console.log("Form submitted with data:", formData);
-
     if (!validateForm()) {
-      console.log("Validation failed");
       setTimeout(() => {
         setFormStatus(null);
         setErrorMessage('');
@@ -83,34 +80,49 @@ export default function Contact() {
       return;
     }
 
-    console.log("Validation passed, submitting to Cosmic...");
     setIsSubmitting(true);
 
+    // Prepare email data
+    const emailData = {
+      name: formData.name,
+      email: formData.email,
+      toMail: "vtc_corporation@yahoo.com", 
+      toName: "VTC Corporation",
+      phone: formData.phone,
+      subject: `New Contact Form - ${formData.name}`,
+      message: formData.message
+    };
+
     try {
-      const result = await submitFormData(formData);
-      console.log("Submission result:", result);
-      
-      if (result.success) {
+      // Send email
+      const response = await fetch("https://api.qrdcard.com/api/url/sendmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailData),
+      });
+
+      if (response.ok) {
         setFormStatus('success');
         setErrorMessage('');
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
         setFormStatus('error');
-        setErrorMessage(result.error || 'Failed to submit form. Please try again.');
-        console.error("Submission failed:", result.error);
+        setErrorMessage('Failed to send message. Please try again.');
       }
-    } catch (err) {
-      console.error("Form submission error:", err);
+    } catch (error) {
+      console.error("Error sending email:", error);
       setFormStatus('error');
       setErrorMessage('An error occurred. Please try again later.');
     }
 
     setIsSubmitting(false);
+    
     setTimeout(() => {
       setFormStatus(null);
       setErrorMessage('');
     }, 5000);
   };
+
 
   const getPhoneNumbers = () => {
     if (contact?.phone_numbers && Array.isArray(contact.phone_numbers)) {
